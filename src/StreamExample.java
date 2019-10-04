@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class StreamExample {
@@ -43,13 +44,21 @@ public class StreamExample {
 						  .startsWith("A"))
                           .collect(Collectors.toList());
       
+      Set<Pessoa> setPessoas = pessoas.stream().filter(p -> p.getNome()
+			    .startsWith("A"))
+              .collect(Collectors.toSet());
+      
       List<String> nomesPessoas = pessoas.stream()
                              .map(Pessoa::getNome)
                              .collect(Collectors.toList());
       
+      List<Integer> idadesPessoas = pessoas.stream().map(Pessoa::getIdade).collect(Collectors.toList());
+            
       pessoasComecandoComA.forEach(pA -> System.out.println("Pessoas começando com A: " +pA.getNome()));
       
       nomesPessoas.forEach(p -> System.out.println("Nomes das pessoas: "+ p));
+      
+      setPessoas.forEach(s->System.out.println("Nomes das pessoas com A(Set) : " + s.getNome()));
       
 
 
